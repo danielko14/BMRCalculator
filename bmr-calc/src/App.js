@@ -39,9 +39,10 @@ const App = () => {
 
   const handleCalculate = () => {
     if (!age || !weight || !feet || !inches || !gender) {
-      alert('Please Fill Out All Forms')
+      alert('Please Fill Out All Forms');
+      //return
     }
-    let heightIn = (feet * 12) + inches
+    let heightIn = (parseInt(feet) * 12) + parseInt(inches);
     let BMR = BMRFormula(weight, heightIn, age, gender);
     setBmr(BMR);
   }
