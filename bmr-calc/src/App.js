@@ -17,30 +17,16 @@ const App = () => {
   const [gender, setGender] = useState('');
   const [bmr, setBmr] = useState(0);
 
-  const handleAgeChange = (age) => {
-    setAge(age);
-  }
-
-  const handleWeightChange = (weight) => {
-    setWeight(weight);
-  }
-
-  const handleFeetChange = (ft) => {
-    setFeet(ft);
-  }
-
-  const handleInchChange = (inches) => {
-    setInches(inches);
-  }
-
-  const handleGenderChange = (gender) => {
-    setGender(gender);
-  }
-
+  const handleAgeChange = (age) => setAge(age);
+  const handleWeightChange = (weight) => setWeight(weight);
+  const handleFeetChange = (ft) => setFeet(ft);
+  const handleInchChange = (inches) => setInches(inches);
+  const handleGenderChange = (gender) => setGender(gender);
+  
   const handleCalculate = () => {
     if (!age || !weight || !feet || !inches || !gender) {
       alert('Please Fill Out All Forms');
-      //return
+      return
     }
     let heightIn = (parseInt(feet) * 12) + parseInt(inches);
     let BMR = BMRFormula(weight, heightIn, age, gender);
