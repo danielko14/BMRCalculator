@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Grid } from '@material-ui/core';
 import './App.css';
 import BMRFormula from './BMR/BMRFormula.js';
 import AgeForm from './BMR/Age.jsx';
@@ -7,8 +8,24 @@ import HeightForm from './BMR/Height.jsx';
 import GenderSelect from './BMR/Gender.jsx';
 import CalculateButton from './BMR/CalculateBtn.jsx';
 import BMRDisplay from './BMR/BMRDisplay.jsx';
+import Footer from './BMR/Footer.jsx';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  h1: {
+    fontFamily: 'Rock Salt, cursive',
+    borderBottom: '2px solid',
+    borderColor: 'white !important',
+    textAlign: 'center',
+  },
+  bmrText: {
+    fontFamily: 'Architects Daughter, cursive',
+    fontSize: '24px',
+  }
+}));
 
 const App = () => {
+  const classes = useStyles();
 
   const [age, setAge] = useState(0);
   const [weight, setWeight] = useState(0);
@@ -22,7 +39,7 @@ const App = () => {
   const handleFeetChange = (ft) => setFeet(ft);
   const handleInchChange = (inches) => setInches(inches);
   const handleGenderChange = (gender) => setGender(gender);
-  
+
   const handleCalculate = () => {
     if (!age || !weight || !feet || !inches || !gender) {
       alert('Please Fill Out All Forms');
@@ -35,12 +52,66 @@ const App = () => {
 
   return (
     <div>
-      <AgeForm handleAgeChange={handleAgeChange}/>
-      <WeightForm handleWeightChange={handleWeightChange}/>
-      <HeightForm handleFeetChange={handleFeetChange} handleInchChange={handleInchChange}/>
-      <GenderSelect handleGenderChange={handleGenderChange} gender={gender}/>
-      <CalculateButton handleCalculate={handleCalculate}/>
-      <BMRDisplay bmr={bmr}/>
+      <h1 className={classes.h1}>BMR Bot</h1>
+      <div id='bread-and-butter'>
+        <Grid
+          container
+          spacing={9}
+          direction="row"
+          justify="center"
+          alignItems="flex-start"
+        >
+          <Grid item xs={2}>
+            <AgeForm handleAgeChange={handleAgeChange}/>
+          </Grid>
+          <Grid item xs={2}>
+            <WeightForm handleWeightChange={handleWeightChange}/>
+          </Grid>
+          <Grid item xs={3}>
+            <HeightForm handleFeetChange={handleFeetChange} handleInchChange={handleInchChange}/>
+          </Grid>
+          <Grid item xs={2}>
+            <GenderSelect handleGenderChange={handleGenderChange} gender={gender}/>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item xs={1}>
+            <CalculateButton handleCalculate={handleCalculate}/>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          spacing={2}
+          direction="column"
+          justify="center"
+          alignItems="center"
+          className={classes.bmrText}
+        >
+          <Grid item xs={2}>
+            Your BMR is:
+          </Grid>
+          <Grid item xs={12}>
+            <BMRDisplay bmr={bmr}/>
+          </Grid>
+          <Grid item xs={2}>
+            kCal/day
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          spacing={2}
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
+          <Footer/>
+        </Grid>
+      </div>
     </div>
   )
 }
