@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
     margin: '10px',
     '&:hover': {
-      backgroundColor: 'deeppink'
+      backgroundColor: 'red'
     }
   }
 }));

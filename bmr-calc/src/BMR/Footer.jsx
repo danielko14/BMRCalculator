@@ -13,6 +13,15 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     fontFamily: 'Architects Daughter, cursive',
     fontSize: '20px'
+  },
+  links: {
+    color: 'white',
+    textAlign: 'center',
+    fontFamily: 'Architects Daughter, cursive',
+    fontSize: '20px',
+    '&:hover': {
+      cursor: 'select'
+    }
   }
 }));
 
@@ -34,10 +43,10 @@ const Footer = () => {
           About The Developer
         </Grid>
         <Grid item xs={2}>
-          Github
+          <a className={classes.links} href="https://github.com/danielko14/">Github</a>
         </Grid>
         <Grid item xs={2}>
-          LinkedIn
+          <a className={classes.links} href="https://www.linkedin.com/in/danielbko/">LinkedIn</a>
         </Grid>
       </Grid>
     </div>

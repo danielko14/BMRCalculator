@@ -6,6 +6,8 @@ font-family: 'Architects Daughter', cursive;
 body {
   color: white;
   background-color: black;
+  overflow-x: hidden;
+  cursor: url('./Media/cute-octopus-pointer.png'), auto;
 }
 
 

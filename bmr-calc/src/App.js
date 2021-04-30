@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
   bmrText: {
     fontFamily: 'Architects Daughter, cursive',
     fontSize: '24px',
+  },
+  header: {
+    backgroundImg: 'linear-gradient(45deg, #f3ec78, #af4261)'
   }
 }));
 
